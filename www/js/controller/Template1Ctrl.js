@@ -18,3 +18,7 @@
 
     });
 })();
+
+function controllerAqui(){
+  alert('Controller "template1Ctrl.js" injetad0 com sucesso!');
+}

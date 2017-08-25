@@ -25,3 +25,7 @@
         $urlRouterProvider.otherwise('/template1');
     });
 })();
+
+function routeAqui(){
+  alert('Dependência "route" injetada com sucesso!');
+}
