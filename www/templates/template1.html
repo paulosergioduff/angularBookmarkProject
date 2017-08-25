@@ -7,7 +7,7 @@
 
     </ion-nav-bar>
 
-    <ion-content><br><br><br><br><br><br><br>
+    <ion-content><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <ion-tabs tabbarPlacement="top">
 
             <ion-tab title="Meu Local" icon-on="ion-ios-home" icon-off="ion-ios-home-outline">
@@ -16,6 +16,10 @@
                     <label>
                         <input type="text" ng-model="data.street" placeholder="Endereço">
                     </label>
+                    <ion-item>
+                        <ion-label>Favoritar</ion-label>
+                        <ion-checkbox ngModel="favorito"></ion-checkbox>
+                     </ion-item>
 
                 </ion-list>
             </ion-tab>
