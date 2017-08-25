@@ -1,1 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
+#botaoContinuar{
+	position: fixed; right: 0px; top: 30%;
+}

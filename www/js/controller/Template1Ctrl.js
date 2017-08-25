@@ -1,6 +1,10 @@
 (function () {
-    angular.module('convem.Template1Ctrl')
+    angular.module('projeto.projeto')
     .controller('Template1Ctrl', function ($scope, $state, $ionicPopup) {
+
+        $scope.choice = {};
+        $scope.data = {};
+        $scope.data.address = "";
 
         loadSavedAddress();
 
@@ -18,7 +22,3 @@
 
     });
 })();
-
-function controllerAqui(){
-  alert('Controller "template1Ctrl.js" injetad0 com sucesso!');
-}

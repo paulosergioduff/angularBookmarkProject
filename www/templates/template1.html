@@ -1,36 +1,35 @@
 <ion-view view-title="Template 1">
 
-    <ion-nav-bar class="">
+    <ion-nav-bar>
 
         <ion-nav-back-button>
         </ion-nav-back-button>
 
     </ion-nav-bar>
 
-    <ion-content class="">
-        <ion-tabs tabbarPlacement="top" class="">
+    <ion-content><br><br><br><br><br><br><br>
+        <ion-tabs tabbarPlacement="top">
 
             <ion-tab title="Meu Local" icon-on="ion-ios-home" icon-off="ion-ios-home-outline">
                 <ion-list class="">
 
-                    <label class="">
+                    <label>
                         <input type="text" ng-model="data.street" placeholder="Endereço">
                     </label>
 
-                    <!-- INCLUIR AQUI CHECKBOX PARA SALVAR COMO FAVORITO -->
                 </ion-list>
             </ion-tab>
 
             <ion-tab title="Favoritos" icon-on="ion-ios-star" icon-off="ion-ios-star-outline">
-                <ion-list class="">
-                    <ion-radio class="" ng-model="choice" ng-value="'A'">Endereço 1</ion-radio>
-                    <ion-radio class="" ng-model="choice" ng-value="'B'">Endereço 2</ion-radio>
-                    <ion-radio class="" ng-model="choice" ng-value="'C'">Endereço 3</ion-radio>
+                <ion-list>
+                    <ion-radio ng-model="choice" ng-value="'A'">Endereço 1</ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'B'">Endereço 2</ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'C'">Endereço 3</ion-radio>
                 </ion-list>
             </ion-tab>
 
             <ion-tab title="Recentes" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
-                <div class="">
+                <div>
                     <ion-radio ng-model="choice" ng-value="'A'">Endereço 1</ion-radio>
                     <ion-radio ng-model="choice" ng-value="'B'">Endereço 2</ion-radio>
                     <ion-radio ng-model="choice" ng-value="'C'">Endereço 3</ion-radio>
@@ -41,9 +40,8 @@
      
     </ion-content>
     
-    <ion-footer-bar class="">
-            <button class="" ng-click="saveFavouriteIfCheckboxMarked()">Continuar</button>
-
+    <ion-footer-bar>
+            <button ng-click="saveFavouriteIfCheckboxMarked()">Continuar</button>
     </ion-footer-bar>
 
 </ion-view>

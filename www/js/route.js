@@ -4,20 +4,17 @@
         
         $stateProvider
 
-          .state('app', {
-              url: '/app',
-              abstract: true,
-              templateUrl: 'templates/menu.html'
-          })
+          // .state('app', {
+          //     url: '/app',
+          //     abstract: true,
+          //     templateUrl: 'templates/menu.html'
+          // })
 
-        .state('app.template1', {
+        .state('template1', { //LUIGGI APPLE - tirei app.
+            cache: false,
             url: '/template1',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/template1.html',
-                    controller: 'Template1Ctrl'
-                }
-            }
+            templateUrl: 'templates/template1.html',
+            controller: 'Template1Ctrl'                   
         })
 
         ;
@@ -25,7 +22,3 @@
         $urlRouterProvider.otherwise('/template1');
     });
 })();
-
-function routeAqui(){
-  alert('Dependência "route" injetada com sucesso!');
-}
