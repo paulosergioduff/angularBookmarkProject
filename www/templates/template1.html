@@ -8,36 +8,49 @@
     </ion-nav-bar>
 
     <ion-content><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <ion-tabs tabbarPlacement="top">
+        <ur ng-repeat="endec in endecs | filter:search | orderBy:'url'">
+            <li>{{ endec.url }}</li>
+            <li>{{ endec.keyword }}</li>
+        </ur>
+           <ion-tabs tabbarPlacement="top">
+
 
             <ion-tab title="Meu Local" icon-on="ion-ios-home" icon-off="ion-ios-home-outline">
                 <ion-list class="">
 
                     <label>
-                        <input type="text" ng-model="data.street" placeholder="Endereço">
+                        <input type="text" ng-model="data.street" placeholder="endereço" id="endec">
                     </label>
                     <ion-item>
-                        <ion-label>Favoritar</ion-label>
-                        <ion-checkbox ngModel="favorito"></ion-checkbox>
+                        <ion-label>Adcionar aos favoritos</ion-label>
+                        <ion-checkbox ngModel="favorito" ng-click="saveFavouriteIfCheckboxMarked()"></ion-checkbox><br>
+                            <!-- Para fins de desenvolvimento -->
+                        <div id="debug" style="display: none;">
+                                <input type="text" id="resultado" value="{{data.street}}"><button ng-click="pegaResultado()">revelar Favoritos</button>
+
+
+                        </div>
                      </ion-item>
 
                 </ion-list>
             </ion-tab>
 
-            <ion-tab title="Favoritos" icon-on="ion-ios-star" icon-off="ion-ios-star-outline">
-                <ion-list>
-                    <ion-radio ng-model="choice" ng-value="'A'">Endereço 1</ion-radio>
-                    <ion-radio ng-model="choice" ng-value="'B'">Endereço 2</ion-radio>
-                    <ion-radio ng-model="choice" ng-value="'C'">Endereço 3</ion-radio>
-                </ion-list>
+            <ion-tab title="Favoritos" icon-on="ion-ios-star" icon-off="ion-ios-star-outline" >
+                <ion-list>   
+                
+                    <ion-radio ng-model="choice" ng-value="'A'" ng-repeat="fav in favA" ng-click="loadAddressIntoField('A', 'favoritos')">{{ fav.url}}</ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'B'" ng-repeat="fav in favB" ng-click="loadAddressIntoField('B', 'favoritos')">{{ fav.url}}</ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'C'" ng-repeat="fav in favC" ng-click="loadAddressIntoField('C', 'favoritos')">{{ fav.url}}</ion-radio>
+                    </ion-list>
             </ion-tab>
 
             <ion-tab title="Recentes" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
-                <div>
-                    <ion-radio ng-model="choice" ng-value="'A'">Endereço 1</ion-radio>
-                    <ion-radio ng-model="choice" ng-value="'B'">Endereço 2</ion-radio>
-                    <ion-radio ng-model="choice" ng-value="'C'">Endereço 3</ion-radio>
-                </div>
+                <ion-list>
+                                  
+                    <ion-radio ng-model="choice" ng-value="'A'" ng-repeat="endec in endecsA" ng-click="loadAddressIntoField('A', 'historico')">{{ endec.url}}</ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'B'" ng-repeat="endec in endecsB" ng-click="loadAddressIntoField('B', 'historico')">{{ endec.url}}</ion-radio>
+                    <ion-radio ng-model="choice" ng-value="'C'" ng-repeat="endec in endecsC" ng-click="loadAddressIntoField('C', 'historico')">{{ endec.url}}</ion-radio>
+                </ion-list>
             </ion-tab>
 
         </ion-tabs>
@@ -49,3 +62,4 @@
     </ion-footer-bar>
 
 </ion-view>
+
