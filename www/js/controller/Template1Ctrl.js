@@ -1,42 +1,38 @@
 (function () {
     angular.module('projeto.projeto')
-    .controller('Template1Ctrl', function ($scope, $state, $ionicPopup) {
+    .controller('Template1Ctrl', function ($scope, $state, $ionicPopup, $http) {
 
         $scope.choice = {};
         $scope.data = {};
         $scope.data.address = "";
+        $scope.selecao = [];
+                
+        // Configura os servidores do service $http
+        $scope.APIfavConfig = "lib/APIfav.json"; // Arquivo JSON para ambiente de testes
+        $scope.APIhistConfig = "lib/APIhist.json";
 
-        // função init que simula entrega de dados da API (não implementada)
-        
+        // função init que aplica entrega de dados da API
         var init = function () {
-        $scope.endec = {url: '', keyword: ''};  
-        $scope.endecsA = [ {
-          url : 'www.google.com',
-          keyword : 'Gloogle'
-        }];
-        $scope.endecsB = [ {
-          url : 'www.yahoo.com',
-          keyword : 'yahoo'
-        }];
-        $scope.endecsC = [ {
-          url : 'www.globonews.com',
-          keyword : 'globonews'
-        }];
+             var favResult = $http.get($scope.APIfavConfig)
+             .then(function(res){
+                $scope.favoritos = res.data;
+                
+                // adciona opções oriunda do JSON a $scope.selecao
+                  for (var i = 0; i < 3; i++) {
+                    $string = 'escolha:'+$scope.favorito;
+                    $scope.selecao.push($string);
+                  }
+                // adciona opções oriunda do JSON a $scope.choice
+                
+                                              
+              });
 
-        $scope.fav = {url: '', keyword: ''};  
-        $scope.favA = [ {
-          url : 'www.ig.com.br',
-          keyword : 'IG'
-        }];
-        $scope.favB = [ {
-          url : 'www.uol.com.br',
-          keyword : 'yahoo'
-        }];
-        $scope.favC = [ {
-          url : 'www.telecine.com',
-          keyword : 'telecine'
-        }];
-    }
+             var histResult = $http.get($scope.APIhistConfig)
+             .then(function(res){
+                $scope.historico = res.data;
+                              
+              });
+          }
     init();         
 
 
@@ -48,18 +44,19 @@
 
         $scope.saveFavouriteIfCheckboxMarked = function() { //Chama API que salva endereço que está no campo address do template
            var resultado = window.document.getElementById('resultado').value; // Pega resultado do campo de endereço
-           alert('Endereço capturado: '+resultado+$scope.choice.choice);
+           console.log('Endereço capturado: '+resultado+$scope.choice.choice);
         }
 
         $scope.loadAddressIntoField = function($escolha, $origem) { //Carrega o favorito ou endereço do histórico selecionado no campo do address do template e vai para aba Meus Endereços
-          alert('funcao loadSavedAddress acionada. Usuário escolheu opção: '+$escolha+' de(o) '+$origem);
+          console.log('funcao loadSavedAddress acionada. Usuário escolheu opção: '+$escolha+' de(o) '+$origem);
         }
 
         $scope.pegaResultado = function() { //Carrega o favorito ou endereço do histórico selecionado no campo do address do template e vai para aba Meus Endereços
           var resultado = window.document.getElementById('resultado').value;
-          alert(resultado);
+          console.log(resultado);
         }
-
     });
+
+
        
 })();
