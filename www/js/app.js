@@ -18,4 +18,6 @@ angular.module('projeto', ['ionic',
       StatusBar.styleDefault();
     }
   });
+
+  
 })

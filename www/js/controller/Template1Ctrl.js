@@ -1,37 +1,27 @@
 (function () {
-    angular.module('projeto.projeto')
-    .controller('Template1Ctrl', function ($scope, $state, $ionicPopup, $http) {
+
+      angular.module('projeto.projeto' )
+    .controller('Template1Ctrl', function ($scope, Template1Service, Template2Service, $state, $ionicPopup, $http) {
 
         $scope.choice = {};
         $scope.data = {};
         $scope.data.address = "";
-        $scope.selecao = [];
-                
-        // Configura os servidores do service $http
-        $scope.APIfavConfig = "lib/APIfav.json"; // Arquivo JSON para ambiente de testes
-        $scope.APIhistConfig = "lib/APIhist.json";
+        
+        $scope.recebeDado = Template1Service.objetoFuncao();
+        
 
+                    
         // função init que aplica entrega de dados da API
         var init = function () {
-             var favResult = $http.get($scope.APIfavConfig)
+         $scope.recebeString = Template2Service.objeto();
+          // Configura os servidores do service $http
+              $scope.APIaddresses = "lib/APIaddresses.json"; // Arquivo JSON para ambiente de testes
+             var addressesResult = $http.get($scope.APIaddresses)
              .then(function(res){
-                $scope.favoritos = res.data;
-                
-                // adciona opções oriunda do JSON a $scope.selecao
-                  for (var i = 0; i < 3; i++) {
-                    $string = 'escolha:'+$scope.favorito;
-                    $scope.selecao.push($string);
-                  }
-                // adciona opções oriunda do JSON a $scope.choice
-                
+                $scope.favoritos = res.data;                        
                                               
               });
 
-             var histResult = $http.get($scope.APIhistConfig)
-             .then(function(res){
-                $scope.historico = res.data;
-                              
-              });
           }
     init();         
 
